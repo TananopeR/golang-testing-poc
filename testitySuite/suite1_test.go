@@ -1,4 +1,4 @@
-package testitySuite
+package testifySuite
 
 import (
 	"fmt"
@@ -13,6 +13,14 @@ type suite1 struct {
 
 type suite2 struct {
 	suite.Suite
+}
+
+func (suite *suite1) SetupSuite() {
+	fmt.Println("before 1")
+}
+
+func (suite *suite2) SetupSuite() {
+	fmt.Println("before 2")
 }
 
 func (suite *suite1) SetupTest() {

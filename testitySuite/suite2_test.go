@@ -1,4 +1,4 @@
-package testitySuite
+package testifySuite
 
 import (
 	"fmt"
@@ -38,7 +38,7 @@ func (suite *suite4) TestSuite4_2() {
 	fmt.Println("suite 4_2 test")
 }
 
-func TestExampleTestSuite3(t *testing.T) {
+func TestExampleTestSuite(t *testing.T) {
 	suite.Run(t, new(suite3))
 }
 

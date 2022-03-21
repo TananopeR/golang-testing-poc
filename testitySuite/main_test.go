@@ -1,4 +1,4 @@
-package testitySuite
+package testifySuite
 
 import (
 	"fmt"
