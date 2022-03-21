@@ -2,10 +2,10 @@ package morestrings
 
 // ReverseRunes returns its argument string reversed rune-wise left to right.
 
-var service = Service{}
+var Services = Service{}
 
 func init() {
-	service.sameValueService = &SameValueService{}
+	Services.SameValueService = &SameValueService{}
 }
 
 func ReverseRunes(s string) string {
@@ -14,12 +14,12 @@ func ReverseRunes(s string) string {
 		r[i], r[j] = r[j], r[i]
 	}
 	// fmt.Println(&service.sameValueService)
-	service.sameValueService.Call("11")
+	Services.SameValueService.Call("11")
 	return string(r)
 }
 
 type Service struct {
-	sameValueService interface {
+	SameValueService interface {
 		Call(string) string
 	}
 }

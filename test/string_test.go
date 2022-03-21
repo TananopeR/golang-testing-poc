@@ -1,12 +1,17 @@
-package morestrings
+package test
 
 import (
+	"example/user/hello/morestrings"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
+
+func init() {
+	fmt.Println("init string_test")
+}
 
 type SameValueServiceMock struct {
 	numberOfCalledTimes int
@@ -28,7 +33,19 @@ func (testify *SameValueServiceMockTestify) Call(s string) string {
 	return ret.String(0)
 }
 
-var serviceMock = &Services
+// func TestMain(m *testing.M) {
+// 	fmt.Println("main http")
+
+// 	os.Exit(m.Run())
+// }
+
+// func TestMainString(m *testing.M) {
+// 	fmt.Println("main http")
+
+// 	os.Exit(m.Run())
+// }
+
+var serviceMock = &morestrings.Services
 
 func TestReverseRunes(t *testing.T) {
 
@@ -37,7 +54,7 @@ func TestReverseRunes(t *testing.T) {
 	serviceMock.SameValueService = sameValueServiceMock
 
 	//call
-	result := ReverseRunes("tteesstt")
+	result := morestrings.ReverseRunes("tteesstt")
 
 	//assert called times
 	if sameValueServiceMock.numberOfCalledTimes != 1 {
@@ -56,7 +73,7 @@ func TestTestify(t *testing.T) {
 	//override
 	serviceMock.SameValueService = sameValueServiceMockTestify
 	//call
-	result := ReverseRunes("tteesstt")
+	result := morestrings.ReverseRunes("tteesstt")
 
 	//assert call as expected
 	sameValueServiceMockTestify.AssertExpectations(t)
@@ -64,3 +81,6 @@ func TestTestify(t *testing.T) {
 	sameValueServiceMockTestify.AssertNumberOfCalls(t, "Call", 1)
 	assert.EqualValues(t, "ttsseett", result, "ReverseRunes method should returned %v, but %v instead.", "ttsseett", result)
 }
+
+// func TestHttp(t *testing.T) {
+// }
